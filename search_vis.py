@@ -184,8 +184,8 @@ def best_first_graph_search_for_vis(problem, f):
                 all_node_colors.append(dict(node_colors))
             elif child in frontier:
                 incumbent = frontier[child]
-                if f(child) < f(incumbent):
-                    del frontier[incumbent]
+                if f(child) < incumbent:
+                    del incumbent
                     frontier.append(child)
                     node_colors[child.state] = "orange"
                     iterations += 1
@@ -213,6 +213,5 @@ def astar_search_graph(problem, h=None):
     You need to specify the h function when you call astar_search, or
     else in your Problem subclass."""
     h = memoize(h or problem.h, 'h')
-    iterations, all_node_colors, node = best_first_graph_search_for_vis(problem, 
-                                                                lambda n: n.path_cost + h(n))
+    iterations, all_node_colors, node = best_first_graph_search_for_vis(problem, lambda n: n.path_cost + h(n))
     return(iterations, all_node_colors, node)
