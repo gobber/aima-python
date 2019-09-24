@@ -904,7 +904,7 @@ from IPython.display import display
 import time
 from search import GraphProblem, romania_map
 
-def show_map(graph_data, node_colors = None):
+def show_map(graph_data, node_colors = None, figsize=(18,13), words=('Un-explored', 'Frontier', 'Currently Exploring', 'Explored', 'Final Solution')):
     G = nx.Graph(graph_data['graph_dict'])
     node_colors = node_colors or graph_data['node_colors']
     node_positions = graph_data['node_positions']
@@ -912,7 +912,7 @@ def show_map(graph_data, node_colors = None):
     edge_weights= graph_data['edge_weights']
     
     # set the size of the plot
-    plt.figure(figsize=(18,13))
+    plt.figure(figsize=figsize)
     # draw the graph (both nodes and edges) with locations from romania_locations
     nx.draw(G, pos={k: node_positions[k] for k in G.nodes()},
             node_color=[node_colors[node] for node in G.nodes()], linewidths=0.3, edgecolors='k')
@@ -933,7 +933,7 @@ def show_map(graph_data, node_colors = None):
     gray_circle = lines.Line2D([], [], color="gray", marker='o', markersize=15, markerfacecolor="gray")
     green_circle = lines.Line2D([], [], color="green", marker='o', markersize=15, markerfacecolor="green")
     plt.legend((white_circle, orange_circle, red_circle, gray_circle, green_circle),
-               ('Un-explored', 'Frontier', 'Currently Exploring', 'Explored', 'Final Solution'),
+               words,
                numpoints=1, prop={'size':16}, loc=(.8,.75))
     
     # show the plot. No need to use in notebooks. nx.draw will show the graph itself.

@@ -7,7 +7,9 @@
 
 Python code for the book *[Artificial Intelligence: A Modern Approach](http://aima.cs.berkeley.edu).* You can use this in conjunction with a course on AI, or for study on your own. We're looking for [solid contributors](https://github.com/aimacode/aima-python/blob/master/CONTRIBUTING.md) to help.
 
+## Observation
 
+This is a altered version of the original AIMA. I modified some things.
 
 ## Structure of the Project
 
