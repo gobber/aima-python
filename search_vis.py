@@ -76,7 +76,7 @@ def breadth_first_search_graph(problem):
     all_node_colors = []
     node_colors = {k : 'white' for k in problem.graph.nodes()}
     
-    node = sc.Node(problem.initial)
+    node = Node(problem.initial)
     
     node_colors[node.state] = "red"
     iterations += 1
@@ -88,7 +88,7 @@ def breadth_first_search_graph(problem):
         all_node_colors.append(dict(node_colors))
         return(iterations, all_node_colors, node)
     
-    frontier = sc.deque([node])
+    frontier = deque([node])
     
     # modify the color of frontier nodes to blue
     node_colors[node.state] = "orange"
