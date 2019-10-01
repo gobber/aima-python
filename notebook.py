@@ -248,7 +248,8 @@ def make_visualize(slider):
 
 
 _canvas = """
-<script type="text/javascript" src="./js/canvas.js"></script>
+<!--script type="text/javascript" src="./js/canvas.js"></script-->
+<script type="text/javascript" src="/nbextensions/google.colab/js/canvas.js"></script>
 <div>
 <canvas id="{0}" width="{1}" height="{2}" style="background:rgba(158, 167, 184, 0.2);" onclick='click_callback(this, event, "{3}")'></canvas>
 </div>
@@ -895,9 +896,9 @@ class Canvas_fol_bc_ask(Canvas):
 
 ############################################################################################################
 import networkx as nx
+import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import lines
-
 from ipywidgets import interact
 import ipywidgets as widgets
 from IPython.display import display
