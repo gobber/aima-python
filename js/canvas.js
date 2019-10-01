@@ -27,7 +27,9 @@ function click_callback(element, event, varname){
     //var kernel = IPython.notebook.kernel;
     var exec_str = varname + ".mouse_click(" + String(x) + ", " + String(y) + ")";
     console.log(exec_str);
-	//const result = await google.colab.kernel.invokeFunction(exec_str,{'iopub': {'output': output_callback}}, {silent: false});
+    const result = await google.colab.kernel.invokeFunction(exec_str);
+    console.log(result);
+	//const result = await google.colab.kernel.invokeFunction(output_callback,{'iopub': {'output': output_callback}}, {silent: false});
 }
 
 function rgbToHex(r,g,b){
