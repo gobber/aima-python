@@ -7,7 +7,7 @@
 
 //Manages the output of code executed in IPython kernel
 function output_callback(out, block){
-    console.log(out);
+    console.log(out);    
     //Handle error in python
     if(out.msg_type == "error"){
 	console.log("Error in python script!");
@@ -24,12 +24,9 @@ function click_callback(element, event, varname){
     var rect = element.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
-    //var kernel = IPython.notebook.kernel;
     var exec_str = varname + ".mouse_click(" + String(x) + ", " + String(y) + ")";
     console.log(exec_str);
-    const result = await google.colab.kernel.invokeFunction(exec_str);
-    console.log(result);
-	//const result = await google.colab.kernel.invokeFunction(output_callback,{'iopub': {'output': output_callback}}, {silent: false});
+    google.colab.kernel.invokeFunction(varname+'.mouse_click', [Number(x), Number(y)], {});
 }
 
 function rgbToHex(r,g,b){
