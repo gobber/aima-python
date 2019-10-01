@@ -24,7 +24,7 @@ function click_callback(element, event, varname){
     var rect = element.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
-    var kernel = IPython.notebook.kernel;
+    //var kernel = IPython.notebook.kernel;
     var exec_str = varname + ".mouse_click(" + String(x) + ", " + String(y) + ")";
     console.log(exec_str);
 	const result = await google.colab.kernel.invokeFunction(exec_str,{'iopub': {'output': output_callback}}, {silent: false});
