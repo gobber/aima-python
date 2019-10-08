@@ -249,6 +249,7 @@ def make_visualize(slider):
 
 _canvas = """
 <!--script type="text/javascript" src="./js/canvas.js"></script-->
+<!-- In Colab it only works if you serv JavaScritp on the path /nbextensions/google.colab/ -->
 <script type="text/javascript" src="/nbextensions/google.colab/canvas.js"></script>
 <div>
 <canvas id="{0}" width="{1}" height="{2}" style="background:rgba(158, 167, 184, 0.2);" onclick='click_callback(this, event, "{3}")'></canvas>
@@ -374,7 +375,7 @@ def display_html(html_string):
 
 
 ################################################################################
-
+# you need to call draw_board() outside this code
 
 class Canvas_TicTacToe(Canvas):
     """Play a 3x3 TicTacToe game on HTML canvas"""
@@ -390,7 +391,7 @@ class Canvas_TicTacToe(Canvas):
         self.strokeWidth(5)
         self.players = (player_1, player_2)
         self.font("20px Arial")
-        self.draw_board()
+        #self.draw_board()
 
     def mouse_click(self, x, y):
         player = self.players[self.turn]

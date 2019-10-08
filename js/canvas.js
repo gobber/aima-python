@@ -20,6 +20,7 @@ function output_callback(out, block){
 }
 
 //Handles mouse click by calling mouse_click of Canvas object with the co-ordinates as arguments
+// Adapted to work with Google Colab
 function click_callback(element, event, varname){
     var rect = element.getBoundingClientRect();
     var x = event.clientX - rect.left;
