@@ -8,6 +8,10 @@ import networkx as nx
 class TSP_problem(Problem):
 
     """ subclass of Problem to define various functions """
+    
+    def __init__(self, initial, distances):
+        super(TSP_problem, self).__init__(initial)
+        self.distances = distances
 
     def two_opt(self, state):
         """ Neighbour generating function for Traveling Salesman Problem """
@@ -31,8 +35,8 @@ class TSP_problem(Problem):
         """ total distance for the Traveling Salesman to be covered if in state2  """
         cost = 0        
         for i in range(len(state2) - 1):            
-            cost += distances[state2[i]][state2[i + 1]]
-        cost += distances[state2[0]][state2[-1]]
+            cost += self.distances[state2[i]][state2[i + 1]]
+        cost += self.distances[state2[0]][state2[-1]]
         return cost
 
     def value(self, state):
@@ -52,13 +56,13 @@ def hill_climbing_tsp(problem, iterations=10000):
         
         for i in range(number_of_neighbors):
             new_state = problem.two_opt(state)
-            neighbors.append(sc.Node(new_state))
+            neighbors.append(Node(new_state))
             state = new_state
             
         return neighbors
 
     # as this is a stochastic algorithm, we will set a cap on the number of iterations    
-    current = sc.Node(problem.initial)
+    current = Node(problem.initial)
     while iterations:
         neighbors = find_neighbors(current.state)
         if not neighbors:
