@@ -2,6 +2,7 @@ from matplotlib import lines
 from search import *
 from utils import *
 from numpy import random
+import matplotlib.pyplot as plt
 import numpy as np
 import networkx as nx
 
