@@ -1054,10 +1054,10 @@ def display_visual(graph_data, user_input, algorithm=None, problem=None):
 
 
 # Function to plot NQueensCSP in csp.py and NQueensProblem in search.py
-def plot_NQueens(solution):
+def plot_NQueens(solution, imgpath='images/queen_s.png'):
     n = len(solution)
     board = np.array([2 * int((i + j) % 2) for j in range(n) for i in range(n)]).reshape((n, n))        
-    im = Image.open('images/queen_s.png')
+    im = Image.open(imgpath)
     height = im.size[1]
     im = np.array(im).astype(np.float) / 255
     fig = plt.figure(figsize=(7, 7))
