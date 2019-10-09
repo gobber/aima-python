@@ -71,7 +71,7 @@ def hill_climbing_tsp(problem, iterations=10000):
         neighbor = argmax_random_tie(neighbors,
                                      key=lambda node: problem.value(node.state))
                 
-        if problem.value(neighbor.state) <= problem.value(current.state):
+        if problem.value(neighbor.state) >= problem.value(current.state):
             current.state = neighbor.state
         iterations -= 1
         
